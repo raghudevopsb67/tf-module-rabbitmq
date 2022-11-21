@@ -4,3 +4,13 @@ data "aws_ami" "centos-8-ami" {
   owners      = ["973714476881"]
 }
 
+data "aws_secretsmanager_secret" "roboshop" {
+  name = "roboshop/all-secrets"
+}
+
+data "aws_secretsmanager_secret_version" "roboshop" {
+  secret_id = data.aws_secretsmanager_secret.roboshop.id
+}
+
+
+
